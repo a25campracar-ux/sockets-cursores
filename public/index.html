@@ -1,3 +1,24 @@
-<canvas id="myCanvas" width="600" height="400">
-    
-</canvas>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cursores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- pantalla de entrada -->
+  <div id="entrada" class="entrada">
+    <input id="nombreClient" type="text" placeholder="Tu Nombre" maxlength="20">
+    <button id="botonEntrar">Entrar</button>
+  </div>
+
+  <!-- pantalla del canvas, empieza escondida -->
+  <div id="pantalla" hidden>
+    <canvas id="lienzo" width="800" height="500"></canvas>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

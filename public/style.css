@@ -1,0 +1,22 @@
+body {
+  font-family: Arial;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+.entrada {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.entrada input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
