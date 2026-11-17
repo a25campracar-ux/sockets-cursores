@@ -31,7 +31,6 @@ io.on("connection", function(socket) {
         }
         usuarios[socket.id].x = pos.x;
         usuarios[socket.id].y = pos.y;
-        console.log(usuarios);
         io.emit("usuarios", usuarios);
     });
 
@@ -43,6 +42,8 @@ io.on("connection", function(socket) {
   });
 });
 
-server.listen(3000, function() {
-  console.log("http://localhost:3000");
+// en el servidor el puerto viene de PORT (pm2); en local, el 3000
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, function() {
+  console.log("http://localhost:" + PORT);
 });
