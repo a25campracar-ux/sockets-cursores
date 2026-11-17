@@ -10,8 +10,9 @@ let nombre = "";
 let todos = {};
 
 // acceso al canva
-document.getElementById("botonEntrar").addEventListener("click", function(e) {
-    
+// es un formulario: se entra con el botón o con Intro (sin recargar la página)
+document.getElementById("formEntrar").addEventListener("submit", function(e) {
+    e.preventDefault();
     nombre = document.getElementById("nombreClient").value.trim();
     if (nombre == "") {return}
     socket.emit("entrar", nombre);
@@ -28,8 +29,9 @@ socket.on("usuarios", function(lista) {
 
 canvas.addEventListener('mousemove', function(e) {
     let rect = canvas.getBoundingClientRect();
-    let x = e.clientX - rect.left;
-    let y = e.clientY - rect.top;
+    // si el lienzo se ve más pequeño (pantallas estrechas), paso a coordenadas del canvas
+    let x = (e.clientX - rect.left) * canvas.width / rect.width;
+    let y = (e.clientY - rect.top) * canvas.height / rect.height;
 
     socket.emit("mover", {x: x, y: y});
 

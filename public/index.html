@@ -2,21 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Cursores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cursores en vivo</title>
+  <link rel="stylesheet" href="/css/pico.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="container">
 
-  <!-- pantalla de entrada -->
-  <div id="entrada" class="entrada">
-    <input id="nombreClient" type="text" placeholder="Tu Nombre" maxlength="20">
-    <button id="botonEntrar">Entrar</button>
-  </div>
+    <!-- pantalla de entrada -->
+    <article id="entrada" class="entrada">
+      <hgroup>
+        <h1>🖱️ Cursores en vivo</h1>
+        <p>Mueve el ratón y míralo aparecer en las pantallas de los demás.</p>
+      </hgroup>
+      <form id="formEntrar">
+        <fieldset role="group">
+          <input id="nombreClient" type="text" placeholder="Tu nombre" maxlength="20" aria-label="Tu nombre">
+          <button id="botonEntrar" type="submit">Entrar</button>
+        </fieldset>
+      </form>
+    </article>
 
-  <!-- pantalla del canvas, empieza escondida -->
-  <div id="pantalla" hidden>
-    <canvas id="lienzo" width="800" height="500"></canvas>
-  </div>
+    <!-- pantalla del canvas, empieza escondida -->
+    <section id="pantalla" hidden>
+      <h2>🖱️ Cursores en vivo</h2>
+      <canvas id="lienzo" width="800" height="500"></canvas>
+    </section>
+
+  </main>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="client.js"></script>

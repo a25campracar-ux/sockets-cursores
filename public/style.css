@@ -1,22 +1,17 @@
-body {
-  font-family: Arial;
-}
+/* Pico pone la base (claro/oscuro automático); aquí solo lo propio */
+.entrada { max-width: 30rem; margin: 15vh auto 0; }
+
+#pantalla { padding-top: 1.5rem; }
 
 canvas {
-  border: 1px solid black;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--pico-card-background-color);
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  box-shadow: var(--pico-card-box-shadow);
+  cursor: none; /* tu propio cursor ya se dibuja en el lienzo */
 }
 
-.entrada {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-}
-
-.entrada input {
-  padding: 10px 14px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  outline: none;
-  transition: border-color 0.2s;
-}
+[hidden] { display: none !important; }

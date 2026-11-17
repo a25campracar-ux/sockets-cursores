@@ -7,6 +7,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static("public"));
+// Pico CSS servido desde node_modules (sin CDN ni build)
+app.use("/css", express.static("node_modules/@picocss/pico/css"));
 
 let usuarios = {};
 
