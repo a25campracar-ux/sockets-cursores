@@ -1,33 +1,103 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0c">
   <title>Cursores en vivo</title>
   <link rel="stylesheet" href="/css/pico.min.css">
+  <link rel="stylesheet" href="/fuente/index.css">
+  <link rel="stylesheet" href="tema.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="container capcalera">
+    <a class="marca" href="/" aria-label="Cursores en vivo, inicio">
+      <span class="marca__signe" aria-hidden="true"></span>
+      Cursores en vivo
+    </a>
+    <p class="capcalera__info" aria-live="polite"><strong id="contador">0</strong> <span id="contadorTexto">conectados</span></p>
+  </header>
+
   <main class="container">
 
     <!-- pantalla de entrada -->
-    <article id="entrada" class="entrada">
-      <hgroup>
-        <h1>🖱️ Cursores en vivo</h1>
-        <p>Mueve el ratón y míralo aparecer en las pantallas de los demás.</p>
-      </hgroup>
-      <form id="formEntrar">
-        <fieldset role="group">
-          <input id="nombreClient" type="text" placeholder="Tu nombre" maxlength="20" aria-label="Tu nombre">
-          <button id="botonEntrar" type="submit">Entrar</button>
-        </fieldset>
-      </form>
-    </article>
+    <section id="entrada" class="bloc heroi">
+      <div>
+        <p class="etiqueta">Tiempo real · Socket.IO</p>
+        <h1 class="titular"><span>Tu ratón,</span> <span>en la pantalla</span> <span>de todos.</span></h1>
+        <p class="entradeta">
+          Escribe tu nombre y mueve el ratón: cada persona conectada ve tu cursor moverse,
+          con tu nombre y un color propio, al mismo tiempo que tú.
+        </p>
+        <form id="formEntrar" class="formulario">
+          <label for="nombreClient">Tu nombre</label>
+          <fieldset role="group">
+            <input id="nombreClient" type="text" placeholder="p. ej. Anna" maxlength="20" autocomplete="off">
+            <button type="submit">Entrar</button>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- Demostración: dos cursores sobre el lienzo -->
+      <div class="llum" aria-hidden="true">
+        <div class="finestra">
+          <div class="finestra__barra">
+            <span class="finestra__punts"><span></span><span></span><span></span></span>
+            <span class="finestra__adreca">cursores-en-vivo / sala</span>
+          </div>
+          <div class="finestra__cos">
+            <svg class="demo" viewBox="0 0 800 500">
+              <defs>
+                <pattern id="puntos" width="32" height="32" patternUnits="userSpaceOnUse">
+                  <rect x="15" y="15" width="2" height="2" fill="#26272b" />
+                </pattern>
+              </defs>
+              <rect width="800" height="500" fill="#0e0e11" />
+              <rect width="800" height="500" fill="url(#puntos)" />
+              <path d="M150 380 C 230 330, 260 230, 330 200" fill="none" stroke="#3fb6a8" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round" opacity=".7" />
+              <g transform="translate(330 200)">
+                <rect x="-7" y="-7" width="14" height="14" fill="#3fb6a8" stroke="#fff" stroke-width="2" />
+                <rect x="14" y="-12" width="62" height="24" fill="#16161a" stroke="#2c2d31" />
+                <text x="24" y="5" fill="#faf8f9" font-size="14" font-weight="600" font-family="Host Grotesk Variable, sans-serif">Anna</text>
+              </g>
+              <path d="M640 110 C 600 170, 560 240, 545 300" fill="none" stroke="#e0a43a" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round" opacity=".7" />
+              <g transform="translate(545 300)">
+                <rect x="-7" y="-7" width="14" height="14" fill="#e0a43a" stroke="#fff" stroke-width="2" />
+                <rect x="14" y="-12" width="58" height="24" fill="#16161a" stroke="#2c2d31" />
+                <text x="24" y="5" fill="#faf8f9" font-size="14" font-weight="600" font-family="Host Grotesk Variable, sans-serif">Marc</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- pantalla del canvas, empieza escondida -->
-    <section id="pantalla" hidden>
-      <h2>🖱️ Cursores en vivo</h2>
-      <canvas id="lienzo" width="800" height="500"></canvas>
+    <section id="pantalla" class="sala" hidden>
+      <div class="sala__cap">
+        <p class="etiqueta">En directo</p>
+        <h1 class="sala__titol">Mueve el ratón.</h1>
+      </div>
+
+      <div class="sala__grid">
+        <div class="llum">
+          <div class="finestra">
+            <div class="finestra__barra" aria-hidden="true">
+              <span class="finestra__punts"><span></span><span></span><span></span></span>
+              <span class="finestra__adreca">cursores-en-vivo / sala</span>
+            </div>
+            <div class="finestra__cos lienzo-marco">
+              <canvas id="lienzo" width="800" height="500"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <aside class="targeta conectados">
+          <h2 class="etiqueta">Conectados</h2>
+          <ul id="lista"></ul>
+        </aside>
+      </div>
     </section>
 
   </main>

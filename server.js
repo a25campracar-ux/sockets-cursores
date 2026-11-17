@@ -9,6 +9,8 @@ const io = new Server(server);
 app.use(express.static("public"));
 // Pico CSS servido desde node_modules (sin CDN ni build)
 app.use("/css", express.static("node_modules/@picocss/pico/css"));
+// Tipografía Host Grotesk, también desde node_modules
+app.use("/fuente", express.static("node_modules/@fontsource-variable/host-grotesk"));
 
 let usuarios = {};
 

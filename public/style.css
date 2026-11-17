@@ -1,17 +1,38 @@
-/* Pico pone la base (claro/oscuro automático); aquí solo lo propio */
-.entrada { max-width: 30rem; margin: 15vh auto 0; }
+/* La base viene de Pico + tema.css (compartido con Time Attack y PaintRooms) */
+[hidden] { display: none !important; }
 
-#pantalla { padding-top: 1.5rem; }
+.heroi { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+.formulario { margin-top: 2.5rem; max-width: 30rem; }
+.formulario label { display: block; margin-bottom: 0.5rem; }
+.formulario fieldset { margin: 0; }
+.demo { display: block; width: 100%; height: auto; }
 
+.sala { padding-block: clamp(2.5rem, 2rem + 3vw, 5rem) clamp(3rem, 2.5rem + 2vw, 5.3rem); }
+.sala__cap { margin-bottom: 2.5rem; }
+.sala__titol { font-size: clamp(2.5rem, 2rem + 2.5vw, 3.75rem); line-height: 1; letter-spacing: -0.035em; margin: 0.4rem 0 0; }
+.sala__grid { display: grid; grid-template-columns: minmax(0, 1fr) 16rem; gap: 1.5rem; align-items: start; }
+
+.lienzo-marco { padding: clamp(0.75rem, 2vw, 1.25rem); background: #0e0e11; }
 canvas {
   display: block;
-  max-width: 100%;
-  margin: 0 auto;
-  background: var(--pico-card-background-color);
-  border: 1px solid var(--pico-muted-border-color);
-  border-radius: var(--pico-border-radius);
-  box-shadow: var(--pico-card-box-shadow);
+  width: 100%;
+  max-width: calc((100dvh - 24rem) * 1.6);
+  min-width: min(100%, 32rem);
+  height: auto;
+  aspect-ratio: 8 / 5;
+  margin-inline: auto;
+  background: #0e0e11;
   cursor: none; /* tu propio cursor ya se dibuja en el lienzo */
 }
 
-[hidden] { display: none !important; }
+.conectados { padding: 1.5rem; }
+.conectados h2 { margin-bottom: 1rem; }
+.conectados ul { list-style: none; padding: 0; margin: 0; }
+.conectados li { list-style: none; display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; margin: 0; border-top: 1px solid var(--linia); color: var(--text-2); overflow-wrap: anywhere; }
+.conectados li span { flex: none; width: 10px; height: 10px; }
+.conectados li.yo { color: var(--text); font-weight: 600; }
+.conectados .vacio { color: var(--text-3); }
+
+@media (max-width: 900px) {
+  .heroi, .sala__grid { grid-template-columns: minmax(0, 1fr); }
+}
